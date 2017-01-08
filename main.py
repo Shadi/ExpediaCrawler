@@ -1,5 +1,24 @@
-import urllib.request
+import time  
+from bs4 import BeautifulSoup
+from selenium import webdriver
 
-result=urllib.request.urlopen("https://www.expedia.de/Flights-Search?trip=roundtrip&leg1=from:Hamburg,%20Deutschland%20(HAM-Alle%20Flugh%C3%A4fen),to:Amman,%20Jordanien%20(AMM-Queen%20Alia%20Intl.),departure:08.03.2017TANYT&leg2=from:Amman,%20Jordanien%20(AMM-Queen%20Alia%20Intl.),to:Hamburg,%20Deutschland%20(HAM-Alle%20Flugh%C3%A4fen),departure:26.03.2017TANYT&passengers=children:0,adults:2,seniors:0,infantinlap:Y&mode=search").read()
 
-print(result)
+browser = webdriver.Firefox()
+
+ffResults = browser.get("https://www.expedia.com/Flights-Search?trip=roundtrip&leg1=from:Hamburg,%20Germany%20(HAM-All%20Airports),to:Amman,%20Jordan%20(AMM-Queen%20Alia%20Intl.),departure:03/08/2017TANYT&leg2=from:Amman,%20Jordan%20(AMM-Queen%20Alia%20Intl.),to:Hamburg,%20Germany%20(HAM-All%20Airports),departure:03/24/2017TANYT&passengers=adults:2,children:0,seniors:0,infantinlap:Y&mode=search")
+
+time.sleep(15)
+
+full_content = browser.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
+
+browser.quit()
+
+soup = BeautifulSoup(full_content, "lxml" )
+
+print(soup.find_all('span', class_='dollars'))
+
+#for dollar in dollars_copy:
+#    print(dollar.text)
+#print(dollars)
+
+#print(result)
