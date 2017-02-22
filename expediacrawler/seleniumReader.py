@@ -8,7 +8,7 @@ def getHtml(url):
     display.start()
     browser = webdriver.Firefox()
     ffResults = browser.get(url)
-    time.sleep(30)
+    time.sleep(25)
     full_content = browser.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
     browser.quit()
     display.stop()
