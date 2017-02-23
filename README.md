@@ -6,7 +6,6 @@ Simple script to get best offers from expedia given codes for departure and dest
 
 **use 3 letter code for cities**, if you are not sure what the code for a city is you can see it here:
 *http://www.iata.org/publications/Pages/code-search.aspx* choose location name and enter the city
-https://www.world-airport-codes.com/
 
 ## Example:
 if you want to travel from New York(NYC) to San Francisco(SFO) from 03/15/2017 to 03/25/2017 but want to also see offers from 2 dates in advance(03/02 and 03/03):
@@ -15,7 +14,9 @@ if you want to travel from New York(NYC) to San Francisco(SFO) from 03/15/2017 t
 
 ## Requirements:
 **python 3**: https://www.python.org/downloads/
+
 **firefox**: https://www.mozilla.org/en-US/firefox/new/
+
 **geckodriver** you can get it using the script here https://gist.github.com/tristandostaler/2f8b28f2bf503db4422a5549e8fed538
 
 ## Download
