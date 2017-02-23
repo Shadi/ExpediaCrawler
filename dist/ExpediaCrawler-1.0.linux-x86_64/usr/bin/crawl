@@ -1,0 +1,11 @@
+#!/usr/bin/python3
+import sys
+
+from expediacrawler import offers_finder
+
+orig_city = sys.argv[1]
+dest_city = sys.argv[2]
+leave = sys.argv[3]
+back = sys.argv[4]
+flex = int(sys.argv[5])
+offers_finder.get_best_offers(orig_city=orig_city, dest_city=dest_city, leave=leave, back=back, forward_days=flex)
