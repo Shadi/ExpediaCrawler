@@ -8,7 +8,7 @@ from . import seleniumReader
 def get_best_offers(orig_city, dest_city, leave, back, forward_days):
     all_offers = {}
     day_offer = get_day_offers(orig_city, dest_city=dest_city, leave=leave, back=back)
-    all_offers[leave + back] = day_offer[0:5]
+    all_offers[leave + "-" + back] = day_offer[0:5]
     for i in range(1, forward_days + 1):
         print("Reading element: {order} ....".format(order=i))
         out_str, return_str = calculate_new_dates(leave, back, i)

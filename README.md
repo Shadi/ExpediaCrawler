@@ -10,7 +10,7 @@ Simple script to get best offers from expedia given codes for departure and dest
 ## Example:
 if you want to travel from New York(NYC) to San Francisco(SFO) from 03/15/2017 to 03/25/2017 but want to also see offers from 2 dates in advance(03/02 and 03/03):
 
-**python3 crawl NYC SFO 03/01/2017 03/18/2017 2**
+**python3 crawl NYC SFO 03/15/2017 03/25/2017 2**
 
 ## Requirements:
 **python 3**: https://www.python.org/downloads/
