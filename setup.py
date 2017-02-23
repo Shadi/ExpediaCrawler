@@ -8,5 +8,10 @@ setup(name='ExpediaCrawler',
       url='https://github.com/Shadi-A/ExpediaCrawler',
       packages=['expediacrawler'],
       scripts=['crawl'],
-      requires=['selenium', 'bs4', 'pyvirtualdisplay', 'lxml']
+      requires=['selenium', 'bs4', 'pyvirtualdisplay', 'lxml'],
+      classifiers=[
+          'Development Status :: 3 - Alpha',
+          'Intended Audience :: Developers',
+          'Programming Language :: Python :: 3'
+      ]
       )
