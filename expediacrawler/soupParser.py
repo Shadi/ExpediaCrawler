@@ -1,4 +1,7 @@
 from bs4 import BeautifulSoup
+import time
+from selenium import webdriver
+from pyvirtualdisplay import Display
 
 __PROCESSOR = 'lxml'
 
@@ -9,7 +12,19 @@ __LAYOVR_CLASS = ''
 __AIRLINE_CLASS = ''
 
 
-def parse_offers_page(html_content):
+def get_page_offers(url):
+    display = Display(visible=0, size=(800, 600))
+    display.start()
+    browser = webdriver.Firefox()
+    ffResults = browser.get(url)
+    time.sleep(25)
+    full_content = browser.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
+    browser.quit()
+    display.stop()
+    return __parse_offers_page(full_content)
+
+
+def __parse_offers_page(html_content):
     offers_list = __parse_offers_list(html_content)
     prices_list = []
     for offer in offers_list:
