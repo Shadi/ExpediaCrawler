@@ -3,6 +3,14 @@ import expediacrawler.urlBuilder as urlBuilder
 from expediacrawler.dateCalculator import calculate_new_dates
 
 
+def find_offers(orig_city, dest_city, leave, back, forward_days):
+    all_offers = get_offers(orig_city, dest_city, leave, back, forward_days)
+    for day in all_offers:
+        print(day, ":")
+        for offer in all_offers[day]:
+            print(offer)
+
+
 def get_offers(orig_city, dest_city, leave, back, forward_days):
     all_offers = {}
     day_offer = get_day_offers(orig_city, dest_city=dest_city, leave=leave, back=back)
@@ -12,11 +20,7 @@ def get_offers(orig_city, dest_city, leave, back, forward_days):
         out_str, return_str = calculate_new_dates(leave, back, i)
         day_offer = get_day_offers(orig_city, dest_city=dest_city, leave=out_str, back=return_str)
         all_offers[out_str + '-' + return_str] = day_offer[0:5]
-
-    for day in all_offers:
-        print(day, ":")
-        for offer in all_offers[day]:
-            print(offer)
+    return all_offers
 
 
 def get_day_offers(orig_city, dest_city, leave, back):
