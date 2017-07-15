@@ -1,7 +1,9 @@
 import csv
 
 
-def print_offers_stdout(all_offers):
+def write_offers(all_offers, results_file):
+    if results_file:
+        append_to_csv(all_offers, results_file)
     for day in all_offers:
         print(day, ":")
         for offer in all_offers[day]:

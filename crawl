@@ -1,13 +1,20 @@
 #! /usr/bin/env python
-import sys
+import argparse
 
 from expediacrawler import offersFinder
 
-orig_city = sys.argv[1]
-dest_city = sys.argv[2]
-leave = sys.argv[3]
-back = sys.argv[4]
+parser = argparse.ArgumentParser()
+parser.add_argument("depart_city", help="The city which you are departing from, 3 letter code")
+parser.add_argument("destination_city", help="Destination city, 3 letter code")
+parser.add_argument("depart_date", help="Departure date, mm/dd/yyyy")
+parser.add_argument("return_date", help="Date of return, mm/dd/yyyy")
+parser.add_argument("--add", type=int, help="Search also for flights on these following dates, "
+                                            "i.e if departing on 07/15 and -add 2 , then search for 07/16 and 07/17")
+parser.add_argument("--file", help="Append the results to this csv file")
+args = parser.parse_args()
+
 flex = 0
-if len(sys.argv) == 6:
-    flex = int(sys.argv[5])
-offersFinder.find_offers(orig_city=orig_city, dest_city=dest_city, leave=leave, back=back, forward_days=flex)
+if args.add:
+    flex = args.add
+offersFinder.find_offers(orig_city=args.depart_city, dest_city=args.destination_city,
+                         leave=args.depart_date, back=args.return_date, forward_days=flex, results_file=args.file)
